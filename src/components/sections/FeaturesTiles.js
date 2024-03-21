@@ -4,6 +4,13 @@ import { SectionTilesProps } from "../../utils/SectionProps";
 import SectionHeader from "./partials/SectionHeader";
 import Image from "../elements/Image";
 
+import icon6 from "./../../assets/images/feature-tile-icon-06.svg";
+import icon4 from "./../../assets/images/feature-tile-icon-04.svg";
+import icon3 from "./../../assets/images/feature-tile-icon-03.svg";
+import icon2 from "./../../assets/images/feature-tile-icon-02.svg";
+import icon5 from "./../../assets/images/feature-tile-icon-05.svg";
+import icon1 from "./../../assets/images/feature-tile-icon-01.svg";
+
 const FeaturesTiles = ({
   className,
   topOuterDivider,
@@ -45,37 +52,37 @@ const FeaturesTiles = ({
           <div className={tilesClasses}>
             {[
               {
-                icon: require("./../../assets/images/feature-tile-icon-06.svg"),
+                icon: icon6,
                 title: "Estamos Aqui por Você",
                 content:
                   "Nossa equipe especializada irá analisar o seu caso e encontrar os melhores financiamentos com as melhores condições de pagamento.",
               },
               {
-                icon: require("./../../assets/images/feature-tile-icon-04.svg"),
+                icon: icon4,
                 title: "Eficiência e Eficácia",
                 content:
                   "Levamos a sério os prazos estipulados. Sabemos a importância de realizar um trabalho de qualidade dentro do tempo combinado.",
               },
               {
-                icon: require("./../../assets/images/feature-tile-icon-03.svg"),
+                icon: icon3,
                 title: "Foco no Que Interessa",
                 content:
                   "Com diversos clientes satisfeitos, atuamos sempre com o objetivo em atender suas expectativas e tornar os seus sonhos realidade.",
               },
               {
-                icon: require("./../../assets/images/feature-tile-icon-02.svg"),
+                icon: icon2,
                 title: "Taxas Reduzidas",
                 content:
                   "Não cobramos taxas de corretagem. Isso significa que você terá um excelente serviço por um preço reduzido. Venha conhecer!",
               },
               {
-                icon: require("./../../assets/images/feature-tile-icon-01.svg"),
+                icon: icon1,
                 title: "Busca Avançada",
                 content:
                   "Localizamos os melhores financiamentos em diversos bancos parceiros e selecionamos somente as melhores opções para você.",
               },
               {
-                icon: require("./../../assets/images/feature-tile-icon-05.svg"),
+                icon: icon5,
                 title: "Processo Transparente",
                 content:
                   "Somos 100% transparentes em nossos processos. Os valores informados não contém letras miúdas nem surpresas indesejadas.",
