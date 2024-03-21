@@ -258,3 +258,23 @@ html {
     transform: rotate(360deg);
   }
 }
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50; /* Cor verde de sucesso */
+  color: white;
+  padding: 10px 15px; /* Ajustando o tamanho do retângulo */
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.5s ease-in; /* Efeito de fade-in */
+  opacity: 0; /* Inicia com a opacidade 0 para o efeito de fade-in */
+  z-index: 999;
+  border: 2px solid #367c39; /* Adicionando estilo de borda */
+  font-size: 14px; /* Tamanho de fonte reduzido */
+}
+
+.notification.show {
+  opacity: 1; /* Quando a classe 'show' é adicionada, a notificação fica visível */
+}

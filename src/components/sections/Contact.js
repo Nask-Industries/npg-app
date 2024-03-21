@@ -3,7 +3,15 @@ import classNames from "classnames";
 import SectionHeader from "./partials/SectionHeader";
 import Input from "../elements/Input";
 import Button from "../elements/Button";
-import useEmail from "../../hooks/useEmail";
+import emailjs from "@emailjs/browser";
+
+const Notification = ({ message, isVisible }) => {
+  return (
+    <div className={`notification ${isVisible ? "show" : ""}`}>
+      <span>{message}</span>
+    </div>
+  );
+};
 
 const Contact = ({
   className,
@@ -15,12 +23,14 @@ const Contact = ({
   invertColor,
   ...props
 }) => {
-  const { postRequest, isLoading } = useEmail();
+  const [isLoading, setIsLoading] = useState(false);
   const [messageObject, setMessageObject] = useState({
     name: "",
     email: "",
     text: "",
   });
+  const [showNotification, setShowNotification] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState("");
 
   const outerClasses = classNames(
     "contact section",
@@ -43,6 +53,14 @@ const Contact = ({
       "Preencha o formulário abaixo que nossa equipe de especialistas entrará em contato.",
   };
 
+  const handleNotification = (message) => {
+    setNotificationMessage(message);
+    setShowNotification(true);
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 5000);
+  };
+
   const changeHandler = useCallback(
     (e) => {
       setMessageObject({
@@ -56,32 +74,57 @@ const Contact = ({
   const sendEmail = useCallback(
     (e) => {
       e.preventDefault();
-      postRequest("/email", {
-        from: {
-          email: "info@trial-zr6ke4nex2v4on12.mlsender.net",
-        },
-        to: [
+
+      setIsLoading(true);
+
+      emailjs
+        .send(
+          "service_c9tzffl",
+          "template_0w17zhv",
           {
+            from_name: messageObject.name,
+            to_email: messageObject.email,
+            message: messageObject.text,
             email: messageObject.email,
           },
-        ],
-        subject: `Contato de Cliente: ${messageObject.name}`,
-        text: messageObject.text,
-        html: messageObject.text,
+          "8OVw1IPt848QbGx2p"
+        )
+        .then(
+          (response) => {
+            handleNotification("Mensagem Enviada! Entraremos em contato logo.");
+            console.log("E-mail enviado com sucesso!", response);
+          },
+          (error) => {
+            console.error("Erro ao enviar e-mail:", error);
+          }
+        );
+
+      setMessageObject({
+        email: "",
+        name: "",
+        text: "",
       });
+
+      setIsLoading(false);
     },
-    [postRequest, messageObject]
+    [messageObject, setIsLoading]
   );
+
+  console.log(isLoading);
 
   return (
     <section id="contact" {...props} className={outerClasses}>
+      <Notification
+        message={notificationMessage}
+        isVisible={showNotification}
+      />
       <div className="container">
         <div className={innerClasses}>
           <SectionHeader data={sectionHeader} className="center-content" />
           <div className="container-xs">
             {isLoading && (
-              <div class="spinner-container">
-                <div class="spinner"></div>
+              <div className="spinner-container">
+                <div className="spinner"></div>
               </div>
             )}
 
@@ -93,6 +136,7 @@ const Contact = ({
                       name="name"
                       label="Nome Completo"
                       placeholder="Informe seu Nome"
+                      value={messageObject.name}
                       labelHidden
                       required
                       onChange={changeHandler}
@@ -103,6 +147,7 @@ const Contact = ({
                       name="email"
                       type="email"
                       label="E-mail"
+                      value={messageObject.email}
                       placeholder="Informe seu Endereço de E-mail"
                       labelHidden
                       required
@@ -116,13 +161,14 @@ const Contact = ({
                       label="Mensagem"
                       placeholder="Digite sua Mensagem"
                       rows={5}
+                      value={messageObject.text}
                       labelHidden
                       required
                       onChange={changeHandler}
                     />
                   </div>
                   <div className="mt-24 mb-32">
-                    <Button color="primary" wide onClick={sendEmail}>
+                    <Button color="primary" wide onSubmit={sendEmail}>
                       Enviar Mensagem
                     </Button>
                   </div>
