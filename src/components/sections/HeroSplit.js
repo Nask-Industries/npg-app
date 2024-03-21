@@ -82,7 +82,7 @@ const HeroSplit = (props) => {
                   <Button
                     tag="a"
                     color="primary"
-                    href="#"
+                    href="/#features"
                     wideMobile
                   >
                     Conheça Nossos Serviços
@@ -91,7 +91,7 @@ const HeroSplit = (props) => {
               </div>
               <div className="hero-figure split-item-image split-item-image-fill illustration-element-01 reveal-from-bottom">
                 <Image
-                  src={require("./../../assets/images/video-placeholder.jpg")}
+                  src={require("./../../assets/images/hero-image.avif")}
                   alt="Hero"
                   width={528}
                   height={396}
