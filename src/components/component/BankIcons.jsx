@@ -10,8 +10,8 @@ const BankIcons = () => {
             <Image
               src={require("./../../assets/images/itau.png")}
               alt={`Itaú`}
-              width={40}
-              height={40}
+              width={35}
+              height={35}
             />
           </div>
           <p>Itaú</p>
@@ -23,8 +23,8 @@ const BankIcons = () => {
             <Image
               src={require("./../../assets/images/bradesco.png")}
               alt={`Bradesco`}
-              width={40}
-              height={40}
+              width={50}
+              height={50}
             />
           </div>
           <p>Bradesco</p>
@@ -36,8 +36,8 @@ const BankIcons = () => {
             <Image
               src={require("./../../assets/images/caixa.png")}
               alt={`Caixa`}
-              width={40}
-              height={40}
+              width={50}
+              height={50}
             />
           </div>
           <p>Caixa</p>
@@ -67,6 +67,32 @@ const BankIcons = () => {
             />
           </div>
           <p>Inter</p>
+        </div>
+      </div>
+      <div className="bank-icon">
+        <div className="bank-icon-inner">
+          <div className="bank-icon-image">
+            <Image
+              src={require("./../../assets/images/cashme.png")}
+              alt={`Logo Banco Cashme`}
+              width={60}
+              height={60}
+            />
+          </div>
+          <p>Cashme</p>
+        </div>
+      </div>
+      <div className="bank-icon">
+        <div className="bank-icon-inner">
+          <div className="bank-icon-image">
+            <Image
+              src={require("./../../assets/images/crediblue.jpg.png")}
+              alt={`Logo Banco crediblue`}
+              width={60}
+              height={60}
+            />
+          </div>
+          <p>Crediblue</p>
         </div>
       </div>
     </div>
