@@ -7,6 +7,7 @@ import Roadmap from '../components/sections/Roadmap';
 import Pricing from '../components/sections/Pricing';
 import Cta from '../components/sections/Cta';
 import Contact from '../components/sections/Contact';
+import Team from '../components/sections/Team';
 
 class Home extends React.Component {
   render() {
@@ -15,6 +16,7 @@ class Home extends React.Component {
         <HeroSplit hasBgColor invertColor />
         <FeaturesTiles />
         <Roadmap topOuterDivider />
+        <Team hasBgColor invertColor />
         <News className="illustration-section-01" />
         <Contact hasBgColor invertColor />
       </React.Fragment>
